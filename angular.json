@@ -102,5 +102,8 @@
       }
     }
   },
-  "defaultProject": "angular-mascotas-frontend"
+  "defaultProject": "angular-mascotas-frontend",
+  "cli": {
+    "analytics": false
+  }
 }
