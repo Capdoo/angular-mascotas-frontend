@@ -1,10 +1,50 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
+import { LoginUser } from 'src/app/models/login-user';
+import { AuthService } from 'src/app/services/auth.service';
+import { TokenService } from 'src/app/services/token.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit{
+
+  loginUser!: LoginUser;
+  username!: string;
+  password!: string;
+  errMssg!: string;
+
+  constructor(
+    private tokenService: TokenService,
+    private authService: AuthService,
+    private router: Router,
+  ){}
+
+  ngOnInit(): void {
+  }
+
+  onLogin(): void{
+    this.loginUser = new LoginUser(this.username, this.password);
+    this.authService.login(this.loginUser).subscribe(
+
+      data => {
+        this.tokenService.setToken(data.token);
+        this.router.navigate(['/']);
+      },
+      err => {
+        this.errMssg = err.error.message;
+        /*
+        this.toasrt.error(err.error.message, 'FAIL', {
+          timeOut: 3000, positionClass: 'toast-top-center',
+        });
+        */
+        console.log(this.errMssg);
+      }
+
+    );
+  }
 
 }
