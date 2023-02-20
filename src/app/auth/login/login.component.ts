@@ -5,6 +5,8 @@ import { LoginUser } from 'src/app/models/login-user';
 import { AuthService } from 'src/app/services/auth.service';
 import { TokenService } from 'src/app/services/token.service';
 
+import { ToastrService } from 'ngx-toastr';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -21,6 +23,7 @@ export class LoginComponent implements OnInit{
     private tokenService: TokenService,
     private authService: AuthService,
     private router: Router,
+    private toastr: ToastrService
   ){}
 
   ngOnInit(): void {
@@ -36,11 +39,10 @@ export class LoginComponent implements OnInit{
       },
       err => {
         this.errMssg = err.error.message;
-        /*
-        this.toasrt.error(err.error.message, 'FAIL', {
+        this.toastr.error(err.error.message, 'FAIL', {
           timeOut: 3000, positionClass: 'toast-top-center',
         });
-        */
+        
         console.log(this.errMssg);
       }
 

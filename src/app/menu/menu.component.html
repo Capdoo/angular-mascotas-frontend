@@ -1,5 +1,5 @@
 <p>menu works!</p>
-<nav class="navbar navbar-expand-lg bg-light mb-4">
+<nav class="navbar navbar-dark bg-dark navbar-expand-lg mb-4">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">Mascotas App</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -25,22 +25,22 @@
             </a>
           </li> -->
 
-          <!-- Para cerrar sesion e iniciar sesion -->
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/login" *ngIf="!isLogged">
-                <i class="fa-solid fa-arrow-right-to-bracket"></i> Iniciar Sesión
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" *ngIf="isLogged" (click)="onLogOut()"> 
-                <i class="fa-solid fa-arrow-right-from-bracket"></i> Cerrar Sesión
-            </a>
-          </li>
- 
+
         </ul>
-        <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
+          <!-- Para cerrar sesion e iniciar sesion -->
+        <!-- Para cerrar sesion e iniciar sesion -->
+        <form class="form-inline my-2 my-lg-0">
+          <button class="btn btn-success" *ngIf="!isLogged" routerLink="/login" type="submit">
+            <i class="fa-solid fa-arrow-right-to-bracket"></i> Login</button>
+
+          <button type="button" class="btn btn-warning" *ngIf="!isLogged" routerLink="/register">
+            <i class="fa-solid fa-arrow-right-to-bracket"></i> Register</button>
+
+
+
+          <button class="btn btn-danger" *ngIf="isLogged" (click)="onLogOut()" type="reset">
+            <i class="fa-solid fa-arrow-right-from-bracket"></i> Cerrar Sesión
+          </button>
         </form>
       </div>
     </div>
