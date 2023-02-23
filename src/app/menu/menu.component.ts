@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TokenService } from '../services/token.service';
+import { TokenService } from '../auth/services/token.service'; 
 
 @Component({
   selector: 'app-menu',

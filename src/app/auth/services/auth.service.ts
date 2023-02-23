@@ -1,11 +1,10 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
-import { environment } from 'src/environments/environment';
-import { NewUser } from '../models/new-user';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { LoginUser } from '../models/login-user';
+import { environment } from 'src/environments/environment';
 import { JwtDto } from '../models/jwt-dto';
+import { LoginUser } from '../models/login-user';
+import { NewUser } from '../models/new-user';
 
 @Injectable({
   providedIn: 'root'
@@ -30,5 +29,4 @@ export class AuthService {
     const url =  `${this.auth_url}/refresh`;
     return this.httpClient.post<JwtDto>(url, jwtDto);
   }
-
 }
