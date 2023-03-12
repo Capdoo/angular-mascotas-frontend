@@ -15,6 +15,7 @@ import { ToastrService } from 'ngx-toastr';
 export class RegisterComponent implements OnInit{
 
   newUser!: NewUser;
+  //fields
   name!: string;
   username!: string;
   email!: string;

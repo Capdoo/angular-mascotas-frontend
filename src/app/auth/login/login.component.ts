@@ -6,6 +6,7 @@ import { AuthService } from '../services/auth.service';
 import { TokenService } from '../services/token.service'; 
 
 import { ToastrService } from 'ngx-toastr';
+import { AuthreloadService } from 'src/app/services/authreload.service';
 
 @Component({
   selector: 'app-login',
@@ -23,7 +24,9 @@ export class LoginComponent implements OnInit{
     private tokenService: TokenService,
     private authService: AuthService,
     private router: Router,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+
+    public authReloadService: AuthreloadService
   ){}
 
   ngOnInit(): void {
@@ -35,6 +38,12 @@ export class LoginComponent implements OnInit{
 
       data => {
         this.tokenService.setToken(data.token);
+
+        //auth generals
+        this.authReloadService.sendMessageIsAdmin(this.tokenService.isAdmin());
+        this.authReloadService.sendMessageIsLogged(this.tokenService.isLogged());
+
+        //navigate
         this.router.navigate(['/']);
       },
       err => {
