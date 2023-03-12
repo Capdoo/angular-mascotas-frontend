@@ -13,20 +13,42 @@
 
           <li class="nav-item">
             <a class="nav-link" routerLink="/">
-              <i class="fa-solid fa-house"></i> Inicio
+              <i class="fa-solid fa-house"></i> Home
             </a>
           </li>
-          <li class="nav-item" *ngIf="isLogged">
-            <a class="nav-link" routerLink="/lista">
-              <i class="fa-solid fa-list"></i> Lista
-            </a>
-          </li>
-  
-          <!-- <li class="nav-item">
-            <a class="nav-link" routerLink="/nuevo"> 
-              <i class="fa-solid fa-plus"></i> Nuevo Producto
+
+
+
+          <!-- <li class="nav-item" *ngIf="isLogged">
+            <a class="nav-link" routerLink="/adoptions">
+              <i class="fa-sharp fa-solid fa-baby-carriage"></i> Adoptions
             </a>
           </li> -->
+
+          <!-- Testing -->
+          <li class="nav-item" *ngIf="isLogged">
+            <a class="nav-link" routerLink="/searchs">
+              <i class="fa-sharp fa-solid fa-magnifying-glass"></i> Searchs
+            </a>
+          </li>
+
+          <!-- Testing -->
+          <li class="nav-item" *ngIf="isLogged">
+            <a class="nav-link" routerLink="/pet-list">
+              <i class="fa-solid fa-paw"></i> My Pets
+            </a>
+          </li>
+
+          <!-- <li class="nav-item">
+            Some old code
+          </li> -->
+
+          <!-- Testing -->
+          <li class="nav-item" *ngIf="isLogged">
+            <a class="nav-link" routerLink="/myinfo">
+              <i class="fa-solid fa-user"></i> My Info
+            </a>
+          </li>          
 
 
         </ul>

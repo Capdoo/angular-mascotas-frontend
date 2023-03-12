@@ -16,10 +16,18 @@ export class RegisterComponent implements OnInit{
 
   newUser!: NewUser;
   //fields
-  name!: string;
+  firstName!: string;
+  lastName!: string;
+  surName!: string;
+
+  dni!: string;
+  phone!: string;
+  address!: string;
+  
   username!: string;
   email!: string;
   password!: string;
+  //err mssg
   errMssg!: string;
 
   constructor(
@@ -33,7 +41,18 @@ export class RegisterComponent implements OnInit{
   }
 
   onRegister(): void{
-    this.newUser = new NewUser(this.name, this.username, this.email, this.password);
+    this.newUser = new NewUser(
+      this.firstName,
+      this.lastName,
+      this.surName,
+      this.dni,
+      this.username,
+      this.phone,
+      this.address,
+      this.email,
+      this.password
+      );
+
     this.authService.register(this.newUser).subscribe(
       data => {
         this.toastr.success('Cuenta creada', 'OK', {

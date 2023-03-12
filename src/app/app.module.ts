@@ -14,6 +14,7 @@ import {FormsModule} from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { AuthModule } from './auth/auth.module';
 import { AuthreloadService } from './services/authreload.service';
+import { PetsModule } from './pets/pets.module';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { AuthreloadService } from './services/authreload.service';
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(), // ToastrModule added
     SharedModule,
-    AuthModule
+    AuthModule,
+    PetsModule
   ],
   providers: [AuthreloadService],
   bootstrap: [AppComponent]

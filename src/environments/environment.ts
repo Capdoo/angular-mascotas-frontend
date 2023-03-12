@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   authUrl: 'http://localhost:8080/auth',
+  petsUrl: 'http://localhost:8080/pets',
   //authUrl: 'https://spring-mascotas-backend-production.up.railway.app/auth',
 };
 
