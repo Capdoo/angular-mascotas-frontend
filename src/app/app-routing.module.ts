@@ -1,25 +1,29 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
+import { IndexComponent } from './index/index.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
-import { IndexComponent } from './index/index.component';
-import { DetailPetComponent } from './pets/pages/detail-pet/detail-pet.component';
-import { EditPetComponent } from './pets/pages/edit-pet/edit-pet.component';
+
 import { ListPetComponent } from './pets/pages/list-pet/list-pet.component';
 import { RegisterPetComponent } from './pets/pages/register-pet/register-pet.component';
+import { EditPetComponent } from './pets/pages/edit-pet/edit-pet.component';
+import { DetailPetComponent } from './pets/pages/detail-pet/detail-pet.component';
 
+//Guards
+import { LoginGuard } from './guards/login.guard';
+import { ResourceGuardService } from './guards/resource-guard.service';
 
 const routes: Routes = [
     { path: '', component: IndexComponent},
-    { path: 'login', component: LoginComponent},
-    { path: 'register', component: RegisterComponent},
+    { path: 'login', component: LoginComponent, canActivate: [LoginGuard]},
+    { path: 'register', component: RegisterComponent, canActivate: [LoginGuard]},
     //pets
-    { path: 'pet-list', component: ListPetComponent},
-    { path: 'pet-register', component: RegisterPetComponent},
-    { path: 'pet-edit', component: EditPetComponent},
-    { path: 'pet-detail', component: DetailPetComponent},
+    { path: 'list-pet', component: ListPetComponent, canActivate: [ResourceGuardService], data: { expectedRol: ['admin', 'user'] }},
+    { path: 'register-pet', component: RegisterPetComponent, canActivate: [ResourceGuardService], data: { expectedRol: ['admin', 'user'] }},
+    { path: 'edit-pet', component: EditPetComponent, canActivate: [ResourceGuardService], data: { expectedRol: ['admin', 'user'] }},
+    { path: 'detail-pet', component: DetailPetComponent, canActivate: [ResourceGuardService], data: { expectedRol: ['admin', 'user'] }},
     
-
     { path: '**', redirectTo: '', pathMatch: 'full'}
 ];
 

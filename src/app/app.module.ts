@@ -16,6 +16,9 @@ import { AuthModule } from './auth/auth.module';
 import { AuthreloadService } from './services/authreload.service';
 import { PetsModule } from './pets/pets.module';
 
+//Interceptors
+import { interceptorProvicer } from './interceptors/resource-interceptor.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +35,7 @@ import { PetsModule } from './pets/pets.module';
     AuthModule,
     PetsModule
   ],
-  providers: [AuthreloadService],
+  providers: [AuthreloadService, interceptorProvicer],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,11 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+
 import { RegisterPetComponent } from './pages/register-pet/register-pet.component';
 import { DetailPetComponent } from './pages/detail-pet/detail-pet.component';
 import { EditPetComponent } from './pages/edit-pet/edit-pet.component';
 import { ListPetComponent } from './pages/list-pet/list-pet.component';
 import { SidebarPetComponent } from './sidebar-pet/sidebar-pet.component';
-import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -17,13 +21,17 @@ import { RouterModule } from '@angular/router';
   ],
   imports: [
     CommonModule,
-    RouterModule
-  ],
+    RouterModule,
+    FormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
+  ],  
   exports: [
     RegisterPetComponent,
     DetailPetComponent,
     EditPetComponent,
-    ListPetComponent
+    ListPetComponent,
+    SidebarPetComponent
   ]
 })
 export class PetsModule { }

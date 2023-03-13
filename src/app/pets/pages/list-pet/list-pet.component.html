@@ -9,6 +9,24 @@
     <div class="col">
         <!-- <app-por-capital></app-por-capital> -->
         <p>list-pet works!</p>
+        <div class="container">
+            <div class="row">
+              <div class="col-md-3 mx-auto my-5" *ngFor="let card of myPets">
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                        <h4>{{card.id}}</h4>
+                        </h5>
+                        <p class="card-text">
+                            {{card.name}}
+                        </p>
+                        <!-- <button class="btn btn-primary btn-block" (click)="viewResults(card.id)">Ver Resultados</button> -->
+                        <button class="btn btn-primary btn-block">Ver Resultados</button>
+                    </div>
+                </div>
+              </div>
+            </div>
+        </div>
     </div>
 
 

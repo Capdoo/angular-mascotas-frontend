@@ -1,19 +1,15 @@
-<p>sidebar-pet works!</p>
-
 
 <ul lass="list-group">
-    <li routerLink=""
-        routerLinkActive="active"
-        class="list-group-item">
-        List Pets
-    
-
-
-        </li>
-    <li routerLink="pet-register"
+    <li 
+        routerLink="/list-pet"
         routerLinkActive="active"
         [routerLinkActiveOptions]="{exact:true}"
-        class="list-group-item">Register Pet</li>
-
-</ul>
+        class="list-group-item">
+        <i class="fa-solid fa-list"></i> My pets</li>
+        
+    <li 
+        routerLink="/register-pet"
+        routerLinkActive="active"
+        class="list-group-item">
+        <i class="fa-solid fa-plus"></i> Register pet</li>
 

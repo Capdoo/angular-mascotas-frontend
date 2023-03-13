@@ -13,7 +13,7 @@ export class PetsService {
 
   constructor(private httpClient: HttpClient) { }
 
-  public getAllPetsByOwnerId(owner_id: number): Observable<PetDto[]>{
+  public getAllPetsByOwner(): Observable<PetDto[]>{
     const url = `${this.pets_url}/owner`;
     return this.httpClient.get<PetDto[]>(url);
   }
