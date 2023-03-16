@@ -1,10 +1,14 @@
 <!-- 
 <h2>App component says {{generalIsLogged}}</h2>
 <h2>App component says {{generalIsAdmin}}</h2> -->
+<div class="row">
+
+
+
 
 <nav class="navbar navbar-dark bg-dark navbar-expand-lg mb-4">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Mascotas App</a>
+      <a class="navbar-brand" href="#">Lost Pets App</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -65,9 +69,11 @@
 
 
           <button class="btn btn-danger" *ngIf="isLogged" (click)="onLogOut()" type="reset">
-            <i class="fa-solid fa-arrow-right-from-bracket"></i> Cerrar Sesión
+            <i class="fa-solid fa-arrow-right-from-bracket"></i> Logout
           </button>
         </form>
       </div>
     </div>
   </nav>
+
+</div>

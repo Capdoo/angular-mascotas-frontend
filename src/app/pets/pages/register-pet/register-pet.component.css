@@ -1,0 +1,10 @@
+img{
+    /* width: 260px; 
+    height: 300px; 
+    border-radius: 0%; */
+
+    width:30%;
+    height: auto;
+    overflow:hidden;
+    border-radius: 5%;
+}

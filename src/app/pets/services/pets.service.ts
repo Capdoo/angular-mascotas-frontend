@@ -18,4 +18,9 @@ export class PetsService {
     return this.httpClient.get<PetDto[]>(url);
   }
 
+  public registerPet(registerPet: PetDto): Observable<PetDto[]>{
+    const url = `${this.pets_url}`;
+    return this.httpClient.post<PetDto[]>(url, registerPet);
+  }
+
 }
