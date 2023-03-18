@@ -13,7 +13,8 @@ export class MenuComponent implements OnInit {
   //later ...
   isOwner = false;
 
-  constructor(private tokenService: TokenService, private authReloadService: AuthreloadService){ }
+  constructor(private tokenService: TokenService, 
+    private authReloadService: AuthreloadService){ }
 
   ngOnInit(): void {
     console.log("testing init menu");

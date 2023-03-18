@@ -7,7 +7,6 @@ import { RegisterComponent } from './auth/register/register.component';
 
 import { ListPetComponent } from './pets/pages/list-pet/list-pet.component';
 import { RegisterPetComponent } from './pets/pages/register-pet/register-pet.component';
-import { EditPetComponent } from './pets/pages/edit-pet/edit-pet.component';
 import { DetailPetComponent } from './pets/pages/detail-pet/detail-pet.component';
 
 //Guards
@@ -21,7 +20,6 @@ const routes: Routes = [
     //pets
     { path: 'list-pet', component: ListPetComponent, canActivate: [ResourceGuardService], data: { expectedRol: ['admin', 'user'] }},
     { path: 'register-pet', component: RegisterPetComponent, canActivate: [ResourceGuardService], data: { expectedRol: ['admin', 'user'] }},
-    { path: 'edit-pet', component: EditPetComponent, canActivate: [ResourceGuardService], data: { expectedRol: ['admin', 'user'] }},
     { path: 'detail-pet', component: DetailPetComponent, canActivate: [ResourceGuardService], data: { expectedRol: ['admin', 'user'] }},
     
     { path: '**', redirectTo: '', pathMatch: 'full'}

@@ -32,6 +32,7 @@ export class ResourceGuardService implements CanActivate{
     //Verifica si el rol esperado es el que yo tengo
     if( !this.tokenService.isLogged() || expectedRol.indexOf(this.realRol) < 0){
       this.router.navigate(['/']);
+      console.log("Exited by resource guard");
       return false;
     }
     return true;

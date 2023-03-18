@@ -1,13 +1,219 @@
-<div class="row container mt-4">
-
+<div class="row">
     <div class="col-3">
         <app-sidebar-pet></app-sidebar-pet>
     </div>
-    
-    <div class="col">
-        <!-- <app-por-capital></app-por-capital> -->
-        <p>detail-pet works!</p>
+    <div class="col-9" style="border-style: none;">
+        <div class="container">
+            <h1>Detail pet</h1>
+        </div>
+
+        <div class="container">
+
+            <form (ngSubmit)="updatePet()" novalidate #f="ngForm">
+
+
+                <div class="row">
+
+                    <!-- FIRST COLUMN -->
+                    <div class="col" style="border: dotted;">
+
+                        <!-- NAME -->
+                        <div class="form-group my-3">
+                            <label for="title" class="my-2">Name</label>
+                            <input type="text" class="form-control" 
+                                id="name" name="name" placeholder="Enter name"
+                                [(ngModel)]="origName" 
+                                [readonly]="isReadOnly"
+                                required>
+                        </div>
+
+                        <!-- SPECIES -->
+                        <div class="form-group my-3">
+                            <label for="species" class="my-2">Species</label>
+
+                            <select class="form-control" name="species" id="species" [value]="currentPet.species"
+                                [(ngModel)]="origSpecies" (ngModelChange)="onChangeNewSpecies($event)" required
+                                [disabled]="isReadOnly">
+
+                                <option *ngFor="let option of listSpecies" [value]="option"
+                                    [selected]="option === currentPet.species">
+                                    {{option}}
+                                </option>
+                            </select>
+                        </div>
+
+                        <!-- SIZE -->
+                        <div class="form-group my-3">
+                            <label for="species" class="my-2">Size</label>
+                            <select class="form-control" name="size" id="size" [value]="currentPet.size"
+                                [(ngModel)]="origSize" (ngModelChange)="onChangeNewSize($event)" [disabled]="isReadOnly"
+                                required>
+                                <option *ngFor="let option of listSizes" [value]="option"
+                                    [selected]="option === currentPet.size">
+                                    {{option}}
+                                </option>
+                            </select>
+                        </div>
+
+                        <!-- BIRTH DATE -->
+                        <div class="form-group my-3">
+                            <label for="bdate" class="my-2">Birth date</label>
+                            <input type="date" class="form-control" id="bdate" name="bdate" 
+                                [(ngModel)]="origDate"
+                                [readonly]="isReadOnly" 
+                                required>
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- SECOND COLUMN -->
+
+                    <div class="col" style="border: dotted;">
+                        <!-- COLOUR -->
+                        <div class="form-group my-3">
+                            <label for="colour" class="my-2">Colour</label>
+                            <input type="text" class="form-control" id="colour" name="colour" placeholder="Enter colour"
+                                [(ngModel)]="origColour" [readonly]="isReadOnly" required>
+                        </div>
+
+                        <!-- BREED -->
+                        <div class="form-group my-3">
+                            <label for="breed" class="my-2">Breed</label>
+                            <select class="form-control" name="breed" id="breed" [value]="currentPet.breed"
+                                [(ngModel)]="origBreed" (ngModelChange)="onChangeNewBreed($event)"
+                                [disabled]="isReadOnly" required>
+                                <option *ngFor="let option of listBreeds" [value]="option"
+                                    [selected]="option == currentPet.breed">
+                                    {{option}}
+                                </option>
+                            </select>
+                        </div>
+
+
+                        <!-- GENDER -->
+                        <div class="form-group my-3">
+                            <label for="gender" class="my-2">Gender</label>
+                            <!-- <select class="form-control" name="gender" id="gender" [(ngModel)]="gender"
+                            [ngModelOptions]="{standalone: true}" required> -->
+
+                            <select class="form-control" name="gender" id="gender" [value]="currentPet.gender"
+                                [(ngModel)]="origGender" (ngModelChange)="onChangeNewGender($event)"
+                                [disabled]="isReadOnly" required>
+                                <option *ngFor="let option of listGender" [value]="option"
+                                    [selected]="option == currentPet.gender">
+                                    {{option}}
+                                </option>
+                            </select>
+                        </div>
+
+
+                        <!-- CHARACTERISTIC -->
+                        <div class="form-group my-3">
+                            <label for="characteristic" class="my-2">Characteristic</label>
+                            <input type="text" class="form-control" 
+                                id="characteristic" name="characteristic" placeholder="Enter characteristic"
+                                [(ngModel)]="origCharacteristic"
+                                [readonly]="isReadOnly" 
+                                required>
+                        </div>
+
+                    </div>
+
+                    <!-- THIRD COLUMN-->
+                    <div class="col" style="border: none;">
+
+                        <!-- VIEW IMAGE -->
+                        <div class="row py-3" style="border: dotted;" align="center">
+                            <div class="container" style="border: none;">
+                                <img class="img-fluid float-right" [src]="imgSrc || './assets/pet_default_gray3.png' "
+                                    alt="">
+                            </div>
+                        </div>
+
+                        <!-- FOR IMAGE SELECTION -->
+                        <div class="row" style="border: dotted;">
+                            <label class="custom-file-label" for="customFile">Choose file</label>
+                            <div class="custom-file mx-0">
+                                <input type="file" (change)="readUrl($event);" class="custom-file-input my-3 mx-0"
+                                    id="customFile" style="border: none" required [disabled]="isReadOnly">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </form>
+
+            <!-- BUTTONS -->
+            <div class="row">
+                <div class="col" style="border: dotted;" align="center">
+                    <button class="btn btn-warning mt-3 mb-3" (click)="seeTest()">Edit pet</button>
+                </div>
+                <div class="col" style="border: dotted;" align="center">
+                    <button type="submit" class="btn btn-primary mt-3 mb-3" (click)="updatePet()" [disabled]="!f.valid || isReadOnly">Update
+                        pet</button>
+                </div>
+                <div class="col" style="border: dotted;" align="center">
+                    <!-- <button class="btn btn-danger mt-3 mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">Delete pet</button> -->
+                    <button class="btn btn-danger mt-3 mb-3" (click)="deletePet()">Delete pet</button>
+                </div>
+            </div>
+
+            <!-- TEST -->
+            <!-- <div class="row">
+                <div class="col">
+                    <button class="btn btn-success mt-3 mb-3" (click)="viewData()">TEEEST</button>
+                </div>
+            </div>
+             -->
+        </div>
     </div>
-
-
 </div>
+
+
+
+<!-- Button trigger modal -->
+<!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Launch demo modal
+  </button> -->
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Delete pet</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            You are about to delete this pet.
+            Are you sure?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-primary acceptdel" (click)="deletePet()">Accept</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <script>
+
+    // $(document).on('click','accept', function () {
+    //     console.log("Is clicked!");
+    //     $(".modal fade").modal("hide");
+    // })
+    $('.modal-backdrop').remove();
+
+    $(document).ready( () => {
+
+        $('.acceptdel').on('click', () => {
+            console.log("clicked");
+            $(".modal-backdrop").css('position','none');
+        });
+
+    });
+  </script>

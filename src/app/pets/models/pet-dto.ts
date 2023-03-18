@@ -1,4 +1,5 @@
 export class PetDto{
+    id!: number;
     name: string;
     gender: string;
     birthDate: string;
@@ -12,6 +13,8 @@ export class PetDto{
     detail_id!: number;
     encoded: string;
 
+    state!: string;
+    
     constructor(
         name: string,
         gender: string,

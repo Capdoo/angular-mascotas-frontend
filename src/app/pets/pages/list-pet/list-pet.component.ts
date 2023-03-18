@@ -5,6 +5,8 @@ import { PetDto } from '../../models/pet-dto';
 import { PetsService } from '../../services/pets.service';
 
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
+import { ResourcesService } from 'src/app/services/resources.service';
 
 @Component({
   selector: 'app-list-pet',
@@ -16,13 +18,17 @@ export class ListPetComponent implements OnInit {
   myPets : PetDto[] = [];
   errMssg! : string;
 
-  constructor(private petsService:PetsService, private toastr: ToastrService, public domSanitizer: DomSanitizer,) { }
+  constructor(private petsService:PetsService, 
+    private toastr: ToastrService, 
+    public domSanitizer: DomSanitizer,
+    private router: Router,
+    public resourcesService: ResourcesService) { }
 
   ngOnInit(): void {
 
     this.petsService.getAllPetsByOwner().subscribe(
       data => {
-        this.myPets = data;
+        this.myPets = data.filter( pet => pet.state === "CREATED");
         console.log(this.myPets);
       },
       err => {
@@ -33,8 +39,13 @@ export class ListPetComponent implements OnInit {
         
         console.log(this.errMssg);
       }
-    )
+    );
+  }
 
+  viewDetails(idPet: number){
+    //aux
+    this.resourcesService.setGlobalPetIdDetail(idPet);
+    this.router.navigate(['/detail-pet']);
   }
 
 }

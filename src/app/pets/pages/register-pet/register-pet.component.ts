@@ -14,25 +14,22 @@ import { Router } from '@angular/router';
 })
 export class RegisterPetComponent implements OnInit {
 
-  listSpecies: string[] = [];
+  listSpecies!: string[];
 
-  name!: string;
   listGender: string[] = ["Female", "Male"];
-  gender = "Female";
   listSizes: string[] = ["Small", "Medium", "Big"];
-
+  listBreeds!: string[];
+  
+  name!: string;
+  gender!: string;
   species!: string;
-  breed = "";
-  size = "Small";
+  breed!:string;
+  size!: string;
 
-  description = "";
-  colour = "";
-  bdate="";
-
-  characteristic = "";
+  colour!: string;
+  bdate!: string;
+  characteristic!: string;
   imgSrc! : string;
-
-  listBreeds: string[] = ["Select species"];
   encoded!: string;
 
   newPet!: PetDto;
@@ -43,18 +40,37 @@ export class RegisterPetComponent implements OnInit {
     private router: Router
     ) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void{
     //load species
     this.detailsService.getAllSpecies().subscribe(
       data => {
         this.listSpecies = data;
+        console.log(data)
+        this.species = this.listSpecies[this.listSpecies.length-1];
+
+                this.detailsService.getBreedsBySpecies(this.species).subscribe(
+                  data => {
+                    console.log(data, this.species);
+                    this.listBreeds = data;
+                    this.breed = this.listBreeds[this.listBreeds.length-1];
+                  },
+                  err => {
+                    console.log(err);
+                  }
+                );
+
       },
       err => {
         console.log(err);
       }
-    )
+    );
+
+    this.size = this.listSizes[this.listSizes.length-1];
+    this.gender = this.listGender[this.listGender.length-1];
+
   }
-  
+
+
   registerPet():void{
     this.updateBirthDate();
     this.newPet = new PetDto(
@@ -68,12 +84,10 @@ export class RegisterPetComponent implements OnInit {
       this.breed,
       this.encoded
       );
+    console.log("My pet incoming");
+    console.log(this.newPet);
     this.petsService.registerPet(this.newPet).subscribe(
       data => {
-        console.log("THIS IS THE SENDING PET");
-        console.log(this.newPet);
-        console.log("THIS IS THE DATA");
-        console.log(data);
         this.router.navigate(['/list-pet']);
         this.toastr.success('Pet registered successfully','OK',{
           timeOut: 3000, positionClass: 'toast-top-center',
@@ -121,7 +135,7 @@ export class RegisterPetComponent implements OnInit {
     //  actual: 1998-31-02
     // desire:  31/02/1998
     const values = this.bdate.split("-");
-    this.bdate = `${values[2]}/${values[2]}/${values[0]}`;
+    this.bdate = `${values[2]}/${values[1]}/${values[0]}`;
   }
 
   //Catch b64 encoded
@@ -137,7 +151,36 @@ export class RegisterPetComponent implements OnInit {
     reader.readAsDataURL(file);
   }
 
-  seeDate(): void{
-    console.log(this.encoded);
+
+  onChangeBreed(selectedBreed: any): void{
+    this.breed = selectedBreed;
+  }
+
+  seeData(): void{
+
+    /*
+    name!: string;
+    gender!: string;
+    species!: string;
+    breed!:string;
+    size!: string;
+  
+    description!: string;
+    colour!: string;
+
+    bdate!: string;
+    characteristic!: string;
+    imgSrc! : string;
+    encoded!: string;*/
+
+    console.log("Current name: "+this.name);
+    console.log("Current gender: "+this.gender);
+    console.log("Current species: "+this.species);
+    console.log("Current breed: "+this.breed);
+    console.log("Current size: "+this.size);
+    console.log("Current colour: "+this.colour);
+    console.log("Current birth date: "+this.bdate);
+    console.log("Current characteristic: "+this.characteristic);
+    console.log("Current encoded: "+this.encoded);
   }
 }

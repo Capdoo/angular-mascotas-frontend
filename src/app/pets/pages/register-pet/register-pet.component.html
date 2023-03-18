@@ -22,7 +22,7 @@
 
 
                         <div class="form-group my-3">
-                            <label for="species" class="my-2">Species: </label>
+                            <label for="species" class="my-2">Species</label>
                             <select class="form-control" name="species" id="species" [(ngModel)]="species"
                                 (ngModelChange)="onChangeSpecies($event)" 
                                 [ngModelOptions]="{standalone: true}" required>
@@ -34,7 +34,7 @@
                         </div>
 
                         <div class="form-group my-3">
-                            <label for="species" class="my-2">Size: </label>
+                            <label for="species" class="my-2">Size</label>
                             <select class="form-control" name="size" id="size" [(ngModel)]="size"
                                 [ngModelOptions]="{standalone: true}" required>
 
@@ -45,7 +45,7 @@
                         </div>
 
 
-                        <div class="form-group my-3" id="datetimepicker">
+                        <div class="form-group my-3">
                             <label for="bdate" class="my-2">Birth date</label>
                             <input type="date" class="form-control" id="bdate" 
                             name="bdate" [(ngModel)]="bdate" required>
@@ -54,8 +54,6 @@
                             </span>
                         </div>
                     </div>
-
-
 
 
                     <!-- Second column -->
@@ -69,9 +67,10 @@
 
                         <!-- div for breed by species -->
                         <div class="form-group my-3">
-                            <label for="breed" class="my-2">Breed: </label>
+                            <label for="breed" class="my-2">Breed</label>
                             <select class="form-control" name="breed" id="breed" 
                                 [(ngModel)]="breed"
+                                (ngModelChange)="onChangeBreed($event)" 
                                 [ngModelOptions]="{standalone: true}" 
                                 required>
 
@@ -84,7 +83,7 @@
 
                         <!-- div for gender-->
                         <div class="form-group my-3">
-                            <label for="gender" class="my-2">Gender: </label>
+                            <label for="gender" class="my-2">Gender</label>
                             <select class="form-control" name="gender" id="gender" [(ngModel)]="gender"
                                 [ngModelOptions]="{standalone: true}" required>
 
@@ -101,11 +100,6 @@
                                 placeholder="Enter characteristic" [(ngModel)]="characteristic" required>
                         </div>
 
-                        <!-- <div class="form-group my-3">
-                            <label for="description" class="my-2">Description</label>
-                            <textarea class="form-control" id="description" name="description" rows="3"
-                                placeholder="Enter description" [(ngModel)]="description"></textarea>
-                        </div> -->
                     </div>
 
                     <div class="row" style="border: none;">
@@ -121,24 +115,18 @@
                     <div class="row py-3" style="border: none;">
                         <div class="container" style="border: none;">
                             <!-- <img class="img-fluid float-right" src="./assets/pet_default2.png " alt=""> -->
-                            <img class="img-fluid float-right" [src]="imgSrc || './assets/pet_default2.png' " alt="">
+                            <img class="img-fluid float-right" [src]="imgSrc || './assets/pet_default_gray3.png' " alt="">
                         </div>
                     </div>
 
                 </div>
 
-                <button type="submit" class="btn btn-primary mt-3 mb-3" [disabled]="!f.valid">Register</button>
+                <button type="submit" class="btn btn-primary mt-3 mb-3" [disabled]="!f.valid || encoded.length == 0">Register</button>
             </form>
 
 
-            <!-- <button class="btn btn-warning mt-3 mb-3" (click)="seeDate()">IMAGE TEST</button> -->
+            <button class="btn btn-warning mt-3 mb-3" (click)="seeData()">PARTICULAR</button>
 
         </div>
-
-
-
-
     </div>
-
-
 </div>
