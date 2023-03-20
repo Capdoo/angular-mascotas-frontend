@@ -1,79 +1,86 @@
-<!-- 
-<h2>App component says {{generalIsLogged}}</h2>
-<h2>App component says {{generalIsAdmin}}</h2> -->
-<div class="row">
-
-
-
-
 <nav class="navbar navbar-dark bg-dark navbar-expand-lg mb-4">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">Lost Pets App</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+  <!-- <nav class="navbar navbar-dark navbar-expand-lg mb-4" style="background-color: aqua;"> -->
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Lost Pets App</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/">
-              <i class="fa-solid fa-house"></i> Home
-            </a>
-          </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/">
+            <i class="fa-solid fa-house"></i> Home
+          </a>
+        </li>
 
+        <!-- <li class="nav-item" *ngIf="isLogged">
+          <a class="nav-link" routerLink="/adoptions">
+            <i class="fa-sharp fa-solid fa-baby-carriage"></i> Adoptions
+          </a>
+        </li> -->
 
+        <!-- Testing -->
+        <li class="nav-item" *ngIf="isLogged">
+          <a class="nav-link" routerLink="/searchs">
+            <i class="fa-sharp fa-solid fa-magnifying-glass"></i> Searchs
+          </a>
+        </li>
 
-          <!-- <li class="nav-item" *ngIf="isLogged">
-            <a class="nav-link" routerLink="/adoptions">
-              <i class="fa-sharp fa-solid fa-baby-carriage"></i> Adoptions
-            </a>
-          </li> -->
+        <!-- Testing -->
+        <li class="nav-item" *ngIf="isLogged">
+          <a class="nav-link" routerLink="/list-pet">
+            <i class="fa-solid fa-paw"></i> Pets
+          </a>
+        </li>
 
-          <!-- Testing -->
-          <li class="nav-item" *ngIf="isLogged">
-            <a class="nav-link" routerLink="/searchs">
-              <i class="fa-sharp fa-solid fa-magnifying-glass"></i> Searchs
-            </a>
-          </li>
+        <!-- Testing -->
+        <li class="nav-item" *ngIf="isLogged">
+          <a class="nav-link" routerLink="/myinfo">
+            <i class="fa-solid fa-user"></i> My Info
+          </a>
+        </li>
+      </ul>
 
-          <!-- Testing -->
-          <li class="nav-item" *ngIf="isLogged">
-            <a class="nav-link" routerLink="/list-pet">
-              <i class="fa-solid fa-paw"></i> Pets
-            </a>
-          </li>
+      <!-- 4. Linea horizontal -->
+      <hr class="text-white-50">
 
-          <!-- <li class="nav-item">
-            Some old code
-          </li> -->
+      <!-- 5. Enlaces redes sociales -->
+      <!-- <ul class="navbar-nav flex-row flex-wrap text-light">
+        <li class="nav-item col-6 col-md-auto p-3" *ngIf="!isLogged">
+          <a class="nav-link" routerLink="/login">
+            <i class="fa-solid fa-arrow-right-to-bracket"></i> Login
+          </a>
+        </li>
 
+        <li class="nav-item col-6 col-md-auto p-3" *ngIf="!isLogged">
+          <a class="nav-link" routerLink="/register">
+            <i class="fa-solid fa-arrow-right-to-bracket"></i> Signup
+          </a>
+        </li>
 
-          <!-- Testing -->
-          <li class="nav-item" *ngIf="isLogged">
-            <a class="nav-link" routerLink="/myinfo">
-              <i class="fa-solid fa-user"></i> My Info
-            </a>
-          </li>          
-
-
-        </ul>
-          <!-- Para cerrar sesion e iniciar sesion -->
-        <!-- Para cerrar sesion e iniciar sesion -->
-        <form class="form-inline my-2 my-lg-0">
-          <button class="btn btn-success" *ngIf="!isLogged" routerLink="/login" type="submit">
-            <i class="fa-solid fa-arrow-right-to-bracket"></i> Login</button>
-
-          <button type="button" class="btn btn-warning" *ngIf="!isLogged" routerLink="/register">
-            <i class="fa-solid fa-arrow-right-to-bracket"></i> Register</button>
-
-
-
-          <button class="btn btn-danger" *ngIf="isLogged" (click)="onLogOut()" type="reset">
+        <li class="nav-item col-6 col-md-auto p-3" *ngIf="isLogged" type="reset">
+          <a class="nav-link" (click)="onLogOut()">
             <i class="fa-solid fa-arrow-right-from-bracket"></i> Logout
-          </button>
-        </form>
-      </div>
-    </div>
-  </nav>
+          </a>
+        </li>
+      </ul> -->
 
-</div>
+
+
+      <form class="form-inline my-2 my-lg-0">
+        <button class="btn btn-success" *ngIf="!isLogged" routerLink="/login" type="submit">
+          <i class="fa-solid fa-arrow-right-to-bracket"></i> Login</button>
+
+        <button type="button" class="btn btn-warning" *ngIf="!isLogged" routerLink="/register">
+          <i class="fa-solid fa-arrow-right-to-bracket"></i> Register</button>
+
+        <button class="btn btn-danger" *ngIf="isLogged" (click)="onLogOut()" type="reset">
+          <i class="fa-solid fa-arrow-right-from-bracket"></i> Logout
+        </button>
+      </form>
+
+    </div>
+  </div>
+</nav>

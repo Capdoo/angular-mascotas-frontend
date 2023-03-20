@@ -1,26 +1,24 @@
 <div class="row">
-    <div class="col-3">
+    <div class="col-md-3">
         <app-sidebar-pet></app-sidebar-pet>
     </div>
-    <div class="col-9" style="border-style: none;">
+    <div class="col-md-9" style="border-style: none;">
         <div class="container">
             <h1>Register pet</h1>
         </div>
 
-        <div class="container">
+        <div class="container-fluid">
 
             <form (ngSubmit)="registerPet()" novalidate #f="ngForm">
 
                 <div class="row">
                     <!-- First column -->
-                    <div class="col">
+                    <div class="col-md" style="border: none;">
                         <div class="form-group my-3">
                             <label for="title" class="my-2">Name</label>
                             <input type="text" class="form-control" id="title" name="title" placeholder="Enter name"
                                 [(ngModel)]="name" required>
                         </div>
-
-
                         <div class="form-group my-3">
                             <label for="species" class="my-2">Species</label>
                             <select class="form-control" name="species" id="species" [(ngModel)]="species"
@@ -43,8 +41,6 @@
                                 </option>
                             </select>
                         </div>
-
-
                         <div class="form-group my-3">
                             <label for="bdate" class="my-2">Birth date</label>
                             <input type="date" class="form-control" id="bdate" 
@@ -55,16 +51,13 @@
                         </div>
                     </div>
 
-
                     <!-- Second column -->
-                    <div class="col">
-
+                    <div class="col-md" style="border: none;">
                         <div class="form-group my-3">
                             <label for="colour" class="my-2">Colour</label>
                             <input type="text" class="form-control" id="colour" name="colour" placeholder="Enter colour"
                                 [(ngModel)]="colour" required>
                         </div>
-
                         <!-- div for breed by species -->
                         <div class="form-group my-3">
                             <label for="breed" class="my-2">Breed</label>
@@ -73,13 +66,11 @@
                                 (ngModelChange)="onChangeBreed($event)" 
                                 [ngModelOptions]="{standalone: true}" 
                                 required>
-
                                 <option *ngFor="let option of listBreeds" [value]="option" [selected]="option">
                                     {{option}}
                                 </option>
                             </select>
                         </div>
-
 
                         <!-- div for gender-->
                         <div class="form-group my-3">
@@ -92,16 +83,16 @@
                                 </option>
                             </select>
                         </div>
-
-
                         <div class="form-group my-3">
                             <label for="characteristic" class="my-2">Characteristic</label>
                             <input type="text" class="form-control" id="characteristic" name="characteristic"
                                 placeholder="Enter characteristic" [(ngModel)]="characteristic" required>
                         </div>
-
                     </div>
+                </div>
 
+                <!-- For img form -->
+                <div class="row">
                     <div class="row" style="border: none;">
                         <label class="custom-file-label" for="customFile">Choose file</label>
                         <div class="custom-file mx-0">
@@ -124,9 +115,7 @@
                 <button type="submit" class="btn btn-primary mt-3 mb-3" [disabled]="!f.valid || encoded.length == 0">Register</button>
             </form>
 
-
-            <button class="btn btn-warning mt-3 mb-3" (click)="seeData()">PARTICULAR</button>
-
+            <!-- <button class="btn btn-warning mt-3 mb-3" (click)="seeData()">PARTICULAR</button> -->
         </div>
     </div>
 </div>

@@ -1,22 +1,20 @@
 <div class="row">
-    <div class="col-3">
+    <div class="col-md-3">
         <app-sidebar-pet></app-sidebar-pet>
     </div>
-    <div class="col-9" style="border-style: none;">
+    <div class="col-md-9" style="border-style: none;">
         <div class="container">
             <h1>Detail pet</h1>
         </div>
 
-        <div class="container">
+        <div class="container-fluid">
 
             <form (ngSubmit)="updatePet()" novalidate #f="ngForm">
-
 
                 <div class="row">
 
                     <!-- FIRST COLUMN -->
-                    <div class="col" style="border: dotted;">
-
+                    <div class="col-md" style="border: dotted;">
                         <!-- NAME -->
                         <div class="form-group my-3">
                             <label for="title" class="my-2">Name</label>
@@ -26,7 +24,6 @@
                                 [readonly]="isReadOnly"
                                 required>
                         </div>
-
                         <!-- SPECIES -->
                         <div class="form-group my-3">
                             <label for="species" class="my-2">Species</label>
@@ -41,7 +38,6 @@
                                 </option>
                             </select>
                         </div>
-
                         <!-- SIZE -->
                         <div class="form-group my-3">
                             <label for="species" class="my-2">Size</label>
@@ -54,7 +50,6 @@
                                 </option>
                             </select>
                         </div>
-
                         <!-- BIRTH DATE -->
                         <div class="form-group my-3">
                             <label for="bdate" class="my-2">Birth date</label>
@@ -70,14 +65,13 @@
 
                     <!-- SECOND COLUMN -->
 
-                    <div class="col" style="border: dotted;">
+                    <div class="col-md" style="border: dotted;">
                         <!-- COLOUR -->
                         <div class="form-group my-3">
                             <label for="colour" class="my-2">Colour</label>
                             <input type="text" class="form-control" id="colour" name="colour" placeholder="Enter colour"
                                 [(ngModel)]="origColour" [readonly]="isReadOnly" required>
                         </div>
-
                         <!-- BREED -->
                         <div class="form-group my-3">
                             <label for="breed" class="my-2">Breed</label>
@@ -90,8 +84,6 @@
                                 </option>
                             </select>
                         </div>
-
-
                         <!-- GENDER -->
                         <div class="form-group my-3">
                             <label for="gender" class="my-2">Gender</label>
@@ -107,8 +99,6 @@
                                 </option>
                             </select>
                         </div>
-
-
                         <!-- CHARACTERISTIC -->
                         <div class="form-group my-3">
                             <label for="characteristic" class="my-2">Characteristic</label>
@@ -122,18 +112,16 @@
                     </div>
 
                     <!-- THIRD COLUMN-->
-                    <div class="col" style="border: none;">
-
+                    <div class="col-md" style="border: dotted;">
                         <!-- VIEW IMAGE -->
-                        <div class="row py-3" style="border: dotted;" align="center">
+                        <div class="row py-3" style="border: none;" align="center">
                             <div class="container" style="border: none;">
                                 <img class="img-fluid float-right" [src]="imgSrc || './assets/pet_default_gray3.png' "
                                     alt="">
                             </div>
                         </div>
-
                         <!-- FOR IMAGE SELECTION -->
-                        <div class="row" style="border: dotted;">
+                        <div class="row" style="border: none;">
                             <label class="custom-file-label" for="customFile">Choose file</label>
                             <div class="custom-file mx-0">
                                 <input type="file" (change)="readUrl($event);" class="custom-file-input my-3 mx-0"
@@ -141,21 +129,19 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
-
             </form>
 
             <!-- BUTTONS -->
             <div class="row">
-                <div class="col" style="border: dotted;" align="center">
+                <div class="col" style="border: none;" align="center">
                     <button class="btn btn-warning mt-3 mb-3" (click)="seeTest()">Edit pet</button>
                 </div>
-                <div class="col" style="border: dotted;" align="center">
+                <div class="col" style="border: none;" align="center">
                     <button type="submit" class="btn btn-primary mt-3 mb-3" (click)="updatePet()" [disabled]="!f.valid || isReadOnly">Update
                         pet</button>
                 </div>
-                <div class="col" style="border: dotted;" align="center">
+                <div class="col" style="border: none;" align="center">
                     <!-- <button class="btn btn-danger mt-3 mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">Delete pet</button> -->
                     <button class="btn btn-danger mt-3 mb-3" (click)="deletePet()">Delete pet</button>
                 </div>
