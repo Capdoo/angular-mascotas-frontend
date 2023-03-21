@@ -1,1 +1,53 @@
 <p>detail-search works!</p>
+<div class="row">
+
+    <div class="col-md-3">
+        <app-sidebar-search></app-sidebar-search>
+    </div>
+
+    <div class="col-md-9">
+        <div class="container">
+            <h1>Detail search</h1>
+        </div>
+
+
+        <div class="container-fluid">
+
+            <form novalidate #f="ngForm">
+
+                <!-- for main picture -->
+                <div class="row">
+                    <div class="col" align="left">
+                        <div class="container" style="border: none;">
+                            <img class="img-fluid float-right" [src]="this.domSanitizer.bypassSecurityTrustResourceUrl('data:image/*;base64,' + currentSearch.encoded) || './assets/pet_default_gray3.png' "
+                                alt="">
+                        </div>
+                    </div>
+                </div>
+                <!-- for secondary photo is they exist -->
+                <!-- <div class="row"></div> -->
+
+                <div class="row">
+
+                    <!-- FIRST COLUMN -->
+                    <div class="col-md">
+                        <!-- PET NAME -->
+                        <div class="form-group my-3">
+                            <label for="title" class="my-2">Name</label>
+                            <input type="text" class="form-control" 
+                                id="name" name="name" placeholder="Enter name"
+                                [(ngModel)]="currentSearch.namePet" 
+                                readonly
+                                required>
+                        </div>
+                    </div>
+                    <!-- SECOND COLUMN -->
+                    <div class="col-md">
+                        
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -20,4 +20,9 @@ export class SearchsService {
     return this.httpClient.get<SearchDto[]>(url);
   }
 
+  public getSeachById(searchId: number): Observable<SearchDto>{
+    const url = `${this.searchs_url}/${searchId}`;
+    return this.httpClient.get<SearchDto>(url);
+  }
+
 }
