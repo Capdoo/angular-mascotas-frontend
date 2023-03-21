@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-auto mx-1 my-5" *ngFor="let card of listTarget">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" [src]="this.domSanitizer.bypassSecurityTrustResourceUrl('data:image/*;base64,' + card.encoded)" alt="stage1a">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <h4>{{card.namePet}}</h4>
+                    </h5>
+                    <p class="card-text">
+                        {{card.speciesPet}}
+                    </p>
+                    <p class="card-text">
+                        {{card.breedPet}}
+                    </p>
+                    <button class="btn btn-primary btn-block" (click)="viewNext(card.id)">Details</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

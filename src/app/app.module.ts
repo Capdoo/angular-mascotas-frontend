@@ -19,6 +19,7 @@ import { PetsModule } from './pets/pets.module';
 //Interceptors
 import { interceptorProvicer } from './interceptors/resource-interceptor.service';
 import { ResourcesService } from './services/resources.service';
+import { SearchsModule } from './searchs/searchs.module';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { ResourcesService } from './services/resources.service';
     ToastrModule.forRoot(), // ToastrModule added
     SharedModule,
     AuthModule,
-    PetsModule
+    PetsModule,
+    SearchsModule
   ],
   providers: [AuthreloadService, ResourcesService, interceptorProvicer],
   bootstrap: [AppComponent]

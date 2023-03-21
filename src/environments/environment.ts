@@ -7,7 +7,7 @@ export const environment = {
   authUrl: 'http://localhost:8080/auth',
   petsUrl: 'http://localhost:8080/pets',
   detailsUrl: 'http://localhost:8080/details',
-
+  searchsUrl: 'http://localhost:8080/searchs',
 
 
   //authUrl: 'https://spring-mascotas-backend-production.up.railway.app/auth',
