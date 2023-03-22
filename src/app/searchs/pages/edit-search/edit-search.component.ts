@@ -1,31 +1,29 @@
 import { Component, OnInit } from '@angular/core';
-
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { ResourcesService } from 'src/app/services/resources.service';
 import { SearchDto } from '../../models/search-dto';
 import { SearchsService } from '../../services/searchs.service';
 
-
 @Component({
-  selector: 'app-detail-search',
-  templateUrl: './detail-search.component.html',
-  styleUrls: ['./detail-search.component.css']
+  selector: 'app-edit-search',
+  templateUrl: './edit-search.component.html',
+  styleUrls: ['./edit-search.component.css']
 })
-export class DetailSearchComponent implements OnInit {
+export class EditSearchComponent implements OnInit {
 
   searchId!: number;
   currentSearch!: SearchDto;
 
-  constructor(private resourceService: ResourcesService,
-    public domSanitizer:DomSanitizer,
+  constructor(private resourcesService: ResourcesService, 
     private router: Router,
-    private searchsService: SearchsService) { }
+    private searchsService: SearchsService,
+    public domSanitizer: DomSanitizer) { }
 
   ngOnInit(): void {
-    this.searchId = this.resourceService.getGlobalSearchId();
-    if (!this.searchId){
-      this.router.navigate(['/list-searches']);
+    this.searchId = this.resourcesService.getGlobalSearchId();
+    if(!this.searchId){
+      this.router.navigate(['/my-searchs']);
     }else{
       this.searchsService.getSeachById(this.searchId).subscribe(
         data => {
@@ -36,10 +34,8 @@ export class DetailSearchComponent implements OnInit {
         }
       );
     }
-  }
 
-  navigateList(){
-    this.router.navigate(['/list-searches']);
+
   }
 
 }

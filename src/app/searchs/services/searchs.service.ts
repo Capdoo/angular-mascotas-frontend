@@ -25,4 +25,15 @@ export class SearchsService {
     return this.httpClient.get<SearchDto>(url);
   }
 
+  //using token
+  public getSearchsByOwner(): Observable<SearchDto[]>{
+    const url = `${this.searchs_url}/owner`;
+    return this.httpClient.get<SearchDto[]>(url);
+  }
+  //create search
+  public createSearch(newSearch: SearchDto): Observable<SearchDto>{
+    const url = `${this.searchs_url}`;
+    return this.httpClient.post<SearchDto>(url, newSearch);
+  }
+
 }

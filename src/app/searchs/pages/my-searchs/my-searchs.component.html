@@ -1,1 +1,21 @@
-<p>my-searchs works!</p>
+<div class="row">
+
+    <div class="col-md-3">
+        <app-sidebar-search></app-sidebar-search>
+    </div>
+
+    <div class="col-md-9">
+        <div class="container">
+            <h1>My searches</h1>
+        </div>
+
+        <div class="container my-5" *ngIf="listMySearchs.length == 0">
+            <p>You don't have any search</p>
+        </div>
+
+        <app-list-section [listTarget]="listMySearchs" [nextIsEditable]="true"></app-list-section>
+
+    </div>
+
+
+</div>

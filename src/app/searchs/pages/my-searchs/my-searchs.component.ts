@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { SearchDto } from '../../models/search-dto';
+import { SearchsService } from '../../services/searchs.service';
 
 @Component({
   selector: 'app-my-searchs',
@@ -7,9 +9,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MySearchsComponent implements OnInit {
 
-  constructor() { }
+  listMySearchs!: SearchDto[];
+
+  constructor(private searchsService: SearchsService) { }
 
   ngOnInit(): void {
+
+    this.searchsService.getSearchsByOwner().subscribe(
+      data => {
+        this.listMySearchs = data;
+      },
+      err => {
+        console.log(err);
+      }
+    );
+
+    
   }
+
 
 }

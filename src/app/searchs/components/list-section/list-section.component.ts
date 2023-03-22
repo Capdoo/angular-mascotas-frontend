@@ -26,10 +26,14 @@ export class ListSectionComponent implements OnInit {
   viewNext(searchId: number): void{
     //single
     if(this.nextIsDetails){
+      console.log("if of next details");
       this.resourcesService.setGlobalSearchId(searchId);
       this.router.navigate(['/detail-search']);
-    }else{
-      //editable
+    }
+    if(this.nextIsEditable){
+      console.log("if of next editable");
+      this.resourcesService.setGlobalSearchId(searchId);
+      this.router.navigate(['/edit-search']);
     }
   }
 

@@ -1,1 +1,135 @@
-<p>create-search works!</p>
+<div class="row">
+
+    <div class="col-md-3">
+        <app-sidebar-search></app-sidebar-search>
+    </div>
+
+    <div class="col-md-9">
+        <h1 class="mb-4">Create new search</h1>
+
+        <div class="row">
+            <div class="col-md" style="border: dotted;">
+                <h2 class="mb-4">Select your pet</h2>
+
+                <div class="card">
+                        <img *ngIf="!isPetSelected" id="new-img-selection" class="card-img-top" src="./assets/pet_default_gray3.png" alt="" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <img *ngIf="isPetSelected" id="new-img-selection" class="card-img-top" [src]="domSanitizer.bypassSecurityTrustResourceUrl('data:image/*;base64,' + petEncoded)" alt="" data-bs-toggle="modal" data-bs-target="#exampleModal">
+
+                    <!-- </div> -->
+                    <div class="card-body text-bg-light">
+                        <!-- SELECT PET-->
+                        <h4>Pet info</h4>
+                        <p>{{petName}}</p>
+                        <p>{{petSpecies}}</p>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md px-4" style="border: dotted;">
+                <h2 class="mb-4">Search info</h2>
+                <!-- Button trigger modal -->
+                <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Launch demo modal
+                </button> -->
+                <form action="">
+                    <div class="form-group my-3">
+                        <label for="title" class="my-2">Address</label>
+                        <input type="text" class="form-control" id="title" name="title" placeholder="Enter address"
+                            [(ngModel)]="address" required>
+                    </div>
+                    <div class="form-group my-3">
+                        <label for="title" class="my-2">District</label>
+                        <input type="text" class="form-control" id="title" name="title" placeholder="Enter district"
+                            [(ngModel)]="district" required>
+                    </div>
+                    <div class="form-group my-3">
+                        <label for="title" class="my-2">Phone A</label>
+                        <input type="text" class="form-control" id="title" name="title" placeholder="Enter phone"
+                            [(ngModel)]="phoneA" required>
+                    </div>
+                    <div class="form-group my-3">
+                        <label for="title" class="my-2">Phone B</label>
+                        <input type="text" class="form-control" id="title" name="title" placeholder="Enter phone"
+                            [(ngModel)]="phoneB" required>
+                    </div>
+                    <div class="form-group my-3">
+                        <label for="bdate" class="my-2">Lost date</label>
+                        <input type="date" class="form-control" id="bdate" 
+                        name="bdate" [(ngModel)]="lostDate" required>
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                    </div>
+
+                    <div class="form-group my-3">
+                        <label for="message" class="my-2">Message</label>
+                        <textarea class="form-control" id="message" name="message" rows="3"
+                            placeholder="Enter message" [(ngModel)]="message" required=""></textarea>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col" style="border: none;" align="center">
+                <button class="btn btn-danger mt-3 mb-3" (click)="cancelSearch()">Cancel search</button>
+            </div>
+            <div class="col" style="border: none;" align="center">
+                <!-- <button class="btn btn-danger mt-3 mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">Delete pet</button> -->
+                <button class="btn btn-primary mt-3 mb-3" (click)="createSearch()">Create search</button>
+            </div>
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+
+
+<!-- Modal -->
+<div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Select one pet</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <!-- List of pets -->
+                <div class="container-fluid">
+
+                    <div class="row my-3" *ngFor="let pet of petsFromOwner" style="border: dotted;">
+
+                        <div class="col-md" align="center">
+                            <div id="card-single-pet" class="card" style="width: 18rem;" data-bs-dismiss="modal" (click)="selectPet(pet.id)">
+
+                                <img class="card-img-top" [src]="this.domSanitizer.bypassSecurityTrustResourceUrl('data:image/*;base64,' + pet.encoded)"  alt="...">
+
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <h4>{{pet.name}}</h4>
+                                    </h5>
+                                    <p class="card-text">
+                                        {{pet.species}}
+                                    </p>
+                                    <!-- <button class="btn btn-primary btn-block" (click)="viewDetails(card.id)">Details</button> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <!-- <button type="button" class="btn btn-primary">Accept</button> -->
+            </div>
+        </div>
+    </div>
+</div>

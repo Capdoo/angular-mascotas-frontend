@@ -12,6 +12,7 @@ export class SearchDto{
     namePet!: string;
     speciesPet!: string;
     breedPet!: string;
+    colour!: string;
     registerDate!: string;
     encoded!: string;
     state!: string;

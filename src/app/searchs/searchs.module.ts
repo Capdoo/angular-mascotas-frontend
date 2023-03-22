@@ -6,12 +6,13 @@ import { FormsModule } from '@angular/forms';
 import { CreateSearchComponent } from './pages/create-search/create-search.component';
 import { DetailSearchComponent } from './pages/detail-search/detail-search.component';
 import { ListSearchComponent } from './pages/list-search/list-search.component';
+import { EditSearchComponent } from './pages/edit-search/edit-search.component';
+import { MySearchsComponent } from './pages/my-searchs/my-searchs.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
-import { SidebarSearchComponent } from './sidebar-search/sidebar-search.component';
-import { MySearchsComponent } from './pages/my-searchs/my-searchs.component';
 
+import { SidebarSearchComponent } from './sidebar-search/sidebar-search.component';
 import { ListSectionComponent } from './components/list-section/list-section.component';
 import { PetSelectionComponent } from './components/pet-selection/pet-selection.component';
 
@@ -23,7 +24,8 @@ import { PetSelectionComponent } from './components/pet-selection/pet-selection.
     SidebarSearchComponent,
     MySearchsComponent,
     ListSectionComponent,
-    PetSelectionComponent
+    PetSelectionComponent,
+    EditSearchComponent
   ],
   imports: [
     CommonModule,
@@ -35,7 +37,8 @@ import { PetSelectionComponent } from './components/pet-selection/pet-selection.
     CreateSearchComponent,
     DetailSearchComponent,
     ListSearchComponent,
-    SidebarSearchComponent
+    SidebarSearchComponent,
+    EditSearchComponent
   ]
 })
 export class SearchsModule { }

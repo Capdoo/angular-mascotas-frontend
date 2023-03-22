@@ -1,0 +1,35 @@
+#img-select-default{
+    /* width: 260px; 
+    height: 300px; 
+    border-radius: 0%; */
+
+    width:50%;
+    height: auto;
+    overflow:hidden;
+    border-radius: 5%;
+    border: dotted;
+}
+
+
+#img-select-pet{
+    cursor: pointer;
+}
+
+#card-single-pet{
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+#card-single-pet:hover{
+    transform: scale(1.05);
+}
+
+#new-img-selection{
+    border-radius: 5%;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+#new-img-selection:hover{
+    transform: scale(1.05);
+}
