@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { catchError, Observable, of } from 'rxjs';
 
 import { environment } from 'src/environments/environment';
 import { SearchDto } from '../models/search-dto';
@@ -34,6 +34,14 @@ export class SearchsService {
   public createSearch(newSearch: SearchDto): Observable<SearchDto>{
     const url = `${this.searchs_url}`;
     return this.httpClient.post<SearchDto>(url, newSearch);
+  }
+  //find search by pet id
+  public getSearchByPetId(petId: number): Observable<SearchDto>{
+    const url = `${this.searchs_url}/pet/${petId}`;
+    console.log("pet id in service: "+petId)
+    // return this.httpClient.get(url)
+    //                       .pipe( catchError => of(['NO INFOR ERROR']));
+    return this.httpClient.get<SearchDto>(url);
   }
 
 }

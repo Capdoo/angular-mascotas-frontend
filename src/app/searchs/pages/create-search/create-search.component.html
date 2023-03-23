@@ -8,7 +8,7 @@
         <h1 class="mb-4">Create new search</h1>
 
         <div class="row">
-            <div class="col-md" style="border: dotted;">
+            <div class="col-md" style="border: none;">
                 <h2 class="mb-4">Select your pet</h2>
 
                 <div class="card">
@@ -25,13 +25,13 @@
                 </div>
 
             </div>
-            <div class="col-md px-4" style="border: dotted;">
+            <div class="col-md px-4" style="border: none;">
                 <h2 class="mb-4">Search info</h2>
                 <!-- Button trigger modal -->
                 <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                     Launch demo modal
                 </button> -->
-                <form action="">
+                <form action="" novalidate #f="ngForm">
                     <div class="form-group my-3">
                         <label for="title" class="my-2">Address</label>
                         <input type="text" class="form-control" id="title" name="title" placeholder="Enter address"
@@ -77,7 +77,8 @@
             </div>
             <div class="col" style="border: none;" align="center">
                 <!-- <button class="btn btn-danger mt-3 mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">Delete pet</button> -->
-                <button class="btn btn-primary mt-3 mb-3" (click)="createSearch()">Create search</button>
+                <button type="submit" class="btn btn-primary mt-3 mb-3" (click)="createSearch()" [disabled]="!f.valid || petEncoded.length == 0">Create search</button>
+
             </div>
         </div>
 

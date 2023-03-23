@@ -7,6 +7,7 @@ import { PetsService } from 'src/app/pets/services/pets.service';
 import { Router } from '@angular/router';
 import { SearchDto } from '../../models/search-dto';
 import { ResourcesService } from 'src/app/services/resources.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-create-search',
@@ -38,7 +39,8 @@ export class CreateSearchComponent implements OnInit {
     public domSanitizer:DomSanitizer,
     private petsService: PetsService,
     private router: Router,
-    private resourceService: ResourcesService) { }
+    private resourceService: ResourcesService,
+    private toastrService: ToastrService) { }
 
   ngOnInit(): void {
     this.petsService.getAllPetsByOwner().subscribe(
@@ -59,17 +61,29 @@ export class CreateSearchComponent implements OnInit {
   selectPet(petId: number): void{
     this.petIdSelected = petId;
     console.log(this.petIdSelected);
-    //assign pet selection
-    this.petsService.getPetById(this.petIdSelected).subscribe(
+
+    //check if pet is already in a search
+    //throw alert orange
+    this.searchsService.getSearchByPetId(this.petIdSelected).subscribe(
       data => {
-        this.petSelected = data;
-        this.petName = this.petSelected.name;
-        this.petSpecies = this.petSelected.species;
-        this.petEncoded = this.petSelected.encoded;
-        this.isPetSelected = true;
+        this.router.navigate(['/create-search']);
+        this.toastrService.warning('This pet is already in a search, please re-post','INFO',{
+          timeOut: 3000, positionClass: 'toast-top-center',
+        });
       },
       err => {
-        console.log(err);
+        this.petsService.getPetById(this.petIdSelected).subscribe(
+          data => {
+            this.petSelected = data;
+            this.petName = this.petSelected.name;
+            this.petSpecies = this.petSelected.species;
+            this.petEncoded = this.petSelected.encoded;
+            this.isPetSelected = true;
+          },
+          err => {
+            console.log(err);
+          }
+        );
       }
     );
   }
@@ -100,6 +114,9 @@ export class CreateSearchComponent implements OnInit {
       data => {
         this.resourceService.setGlobalSearchId(data.id);
         this.router.navigate(['/detail-search']);
+        this.toastrService.success('Search created successfully','OK',{
+          timeOut: 3000, positionClass: 'toast-top-center',
+        });
       },
       err => {
         console.log(err);

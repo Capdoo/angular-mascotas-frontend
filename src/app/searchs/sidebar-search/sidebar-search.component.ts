@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-sidebar-search',
@@ -6,6 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sidebar-search.component.css']
 })
 export class SidebarSearchComponent implements OnInit {
+
+  @Input() activeList!: string;
+  @Input() activeMySearchs!: string;
 
   constructor() { }
 

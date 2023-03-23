@@ -37,7 +37,7 @@ export class ResourceInterceptorService implements HttpInterceptor{
 
     return next.handle(intReq).pipe(catchError( (err: HttpErrorResponse) => {
       //Es decir el token ha expirado pero existe autorizacion
-      if (err.status === 401){
+      if (err.status === 401 || err.status === 404){
         //Se requiere un JwtDto para enviar al servidor
         const dto:JwtDto = new JwtDto(this.tokenService.getToken()!);
 

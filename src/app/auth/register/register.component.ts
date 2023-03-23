@@ -56,7 +56,7 @@ export class RegisterComponent implements OnInit{
     this.authService.register(this.newUser).subscribe(
       data => {
         this.toastr.success('Cuenta creada', 'OK', {
-          timeOut: 3000, positionClass: 'toastr-top-center',
+          timeOut: 3000, positionClass: 'toast-top-center',
         });
         this.router.navigate(['/login']);
       },
